@@ -21,6 +21,18 @@ body {
   left: 0px;
   overflow: hidden;
 }
+.v47_15 {
+  width: 159px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 86px;
+  left: 887px;
+  font-family: Arima Madurai;
+  font-weight: Medium;
+  font-size: 24px;
+  opacity: 1;
+  text-align: left;
+}
 .v6_3 {
   width: 100%;
   height: 982px;
@@ -366,14 +378,15 @@ body {
 </style>
 <body>
 <div class="v2_5"><div class="v6_3"></div><div class="v7_8"></div><div class="v7_2"></div><div class="v7_15"></div><div class="v7_16"></div><div class="v7_17"></div><div class="v7_19"></div><div class="v7_21"></div><span class="v7_24">Saturday-Thursuday
-     10AM-110PM</span><span class="v7_25">0101 818 1156</span><a href="../se/login.php" class="v7_26">Login</a><a href="../se/signup.php" class="v7_27">Sign up</a><span class="v7_30">Beauty Dent Clinic</span><div class="v7_28"></div><span class="v9_3">Enjoy your 
+     10AM-110PM</span><span class="v7_25">0101 818 1156</span><a href="../SE-project/login.php" class="v7_26">Login</a><a href="../SE-project/signup.php" class="v7_27">Sign up</a><span class="v7_30">Beauty Dent Clinic</span><div class="v7_28"></div><span class="v9_3">Enjoy your 
         new Dazzling smile</span><div class="v10_2"></div><span class="v10_3">View our work</span><span class="v10_4">We are the reason someone smiles today</span><span class="v10_5">Al Manteqah Al Oula, 
 Nasr City, Cairo Governorate
-</span><span class="v17_2">Beauty Dent </span><div class="v26_0"></div><a href="../se/Home.php" class="v26_1">Home</a>
-<a href="../services.php" class="v26_2">Services</a>
-<a href="../Gallery.php" class="v26_3">Gallery</a>
-<a href="../About.php" class="v26_4">About </a>
-<a href="../se/contact-us.php"class="v26_6">Contact us</span></div>
+</span><span class="v17_2">Beauty Dent </span><div class="v26_0"></div><a href="../SE-project/Home.php" class="v26_1">Home</a>
+<a href="../SE-project/services.php" class="v26_2">Services</a>
+<a href="../SE-project/Gallery.php" class="v26_3">Gallery</a>
+<a href="../SE-project/About.php" class="v26_4">About </a>
+<a href="../SE-project/Appointment.php" class="v47_15">Appointments</a>
+<a href="../SE-project/contact-us.php"class="v26_6">Contact us</span></div>
 </body>
 
 </html>
