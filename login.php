@@ -1,10 +1,16 @@
+<?php
+if(isset($_POST['signin'])){
+header("location:Home.php");
+}
+
+?>
 <html>
     <head>
     <link href="https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap" rel="stylesheet" /><link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" /><link href="./main.css" rel="stylesheet" />
     <title>login</title><link href="./main.css" rel="stylesheet" /><title>login</title><link href="./css/main.css" rel="stylesheet" />
     <title>login</title><link href="./css/main.css" rel="stylesheet" /><title>login</title>
 
-</head>
+</head> 
 <style>
 {
   box-sizing: border-box;
@@ -113,6 +119,8 @@ body {
   font-size: 48px;
   opacity: 1;
   text-align: left;
+  background: transparent;
+  border-color: transparent;
 }
 .v74_8 {
   width: 313px;
@@ -187,6 +195,8 @@ body {
 }
 .v74_19 {
   width: 83px;
+  color: rgba(255,255,255,1);
+
   color: url("../images/v74_19.png");
   position: absolute;
   top: 776px;
@@ -247,6 +257,8 @@ body {
 }
 .v74_25 {
   width: 97px;
+  color: rgba(255,255,255,1);
+
   color: url("../images/v74_25.png");
   position: absolute;
   top: 85px;
@@ -440,9 +452,22 @@ body {
 <body>
     <div class="v74_2"><div class="v74_3"></div>
     <div class="v74_17"></div>
-    <div class="v74_11"></div>
-    <div class="v74_4"></div><span class="v74_5">Beauty Dent </span><div class="v74_6"></div><span class="v74_7">Login</span><span class="v74_8">Username</span><div class="v74_9"></div><span class="v74_10">Password</span><div class="v74_12"></div><span class="v74_13">No account?</span><span class="v74_16">Register now</span><span class="v74_19">Forgot your   
-              </span><span class="v74_20">Password?</span><span class="v74_22">Home</span><span class="v74_23">Services</span><span class="v74_24">Gallery</span><span class="v74_25">About </span><span class="v74_26">Appointments</span><span class="v74_27">Contact us</span><div class="v74_28"></div><div class="v74_29"></div><span class="v74_30">Sign up</span><span class="v74_31">Login</span><div class="v74_32"></div><span class="v74_33">Your smile 
+    <div class="v74_4"></div><span class="v74_5">Beauty Dent </span><div class="v74_6"></div>
+    <form action=login.php method=post>
+          
+    <input type=text name=email placeholder="Email" class="v74_9"required>   
+    <input type=text name=password placeholder="Password"  class="v74_11"required>
+    <input type=submit name= signin value= login class="v74_7">
+</form>
+<div class="v74_12"></div><span class="v74_13">No account?</span><a href="../signup.php" class="v74_16">Register now</a><a href="../forgetPassword.php" class="v74_19">Forgot your   
+</a><span class="v74_20">Password?</span>
+              <a href="../se/Home.php" class="v74_22">Home</a>
+              <a href="../services.php" class="v74_23">Services</a>
+              <a href="../Gallery.php" class="v74_24">Gallery</a>
+              <a href="../About.php" class="v74_25">About </a>
+              <a href="../Appointment.php"class="v74_26">Appointments</a>
+              <a href="../se/contact-us.php"class="v74_27">Contact us</a> 
+              <div class="v74_32"></div><span class="v74_33">Your smile 
                is our priority</span><div class="v74_39"></div><div class="v74_38"></div><div class="v74_35"></div><span class="v74_40">Al Manteqah Al Oula, 
 Nasr City, Cairo Governorate
 </span><span class="v74_41">Saturday-Thursuday
