@@ -500,6 +500,12 @@ Nasr City, Cairo Governorate
 						$_SESSION['e']= $row['Email'];
 						$_SESSION['t'] = $row['Type'];
             echo'<script>alert(" LoggedIn Successfully !")</script>';
+               $t=$_SESSION['t'];
+							if($t=="patient")
+							{
+
+								header('Location: Home.php?id='.$id);
+							}
 
 						}
 					}
