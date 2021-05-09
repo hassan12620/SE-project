@@ -1,7 +1,5 @@
 <?php
-if(isset($_POST['signup'])){
-  header("location:../login.php");
-}
+  session_start();
 ?>
 <html>
 <head><link href="https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap" rel="stylesheet" /><link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" /><link href="./main.css" rel="stylesheet" /><title>Document</title><link href="./main.css" rel="stylesheet" /><title>Document</title><link href="./css/main.css" rel="stylesheet" />
@@ -579,3 +577,92 @@ Nasr City, Cairo Governorate
 
 </body>
 </html>
+<?php
+	  
+$dbServername="localhost";
+$dbUsername="root";
+$dbpassword="";
+$db = "beautyclinic";
+
+$conn = mysqli_connect($dbServername,$dbUsername,$dbpassword,$db);
+
+
+if(isset($_POST['signup']))
+{
+	
+$_SESSION['f']=$_POST['fname'];
+$f=$_SESSION['f'];
+$_SESSION['l']=$_POST['Lname'];
+$l=$_SESSION['l'];
+$_SESSION['e']=$_POST['email'];
+$e=$_SESSION['e'];
+$_SESSION['p']=$_POST['password'];
+$p=$_SESSION['p'];
+$_SESSION['n']=$_POST['number'];
+$n=$_SESSION['n'];
+
+$insert="INSERT INTO persons (First_Name,Last_Name,Type,Email,Password,Phone) 	
+VALUES('$f', '$l','patient','$e','$p','$n' )"; 
+
+$repeat="SELECT * FROM persons WHERE Email='$e'";
+$resultemail = mysqli_query( $conn,$repeat );
+	if(empty($f))
+	{
+		echo '<script>alert(" Empty First Name !")</script>';
+		if (empty($l))
+		{
+			echo '<script>alert(" Empty Last Name !")</script>';
+			if (empty($e))
+			{
+				echo '<script>alert(" Empty Email !")</script>';
+				if (empty($p))
+				{
+					echo '<script>alert(" Empty Password !")</script>';
+          if(empty($n))
+          {
+            echo '<script>alert(" Empty Phone Number !")</script>';
+          }
+				}
+			}
+		}
+	}
+	else if(!filter_var($e,FILTER_VALIDATE_EMAIL))
+	{
+		echo '<script>alert(" Invalid E-Mail !")</script>';
+	}
+	else if(!preg_match("/^[a-zA-Z]*$/", $f)||!preg_match("/^[a-zA-Z]*$/", $l))
+	{
+		echo '<script>alert(" Invalid Characters !")</script>';
+	}
+
+	else if(!is_numeric($p))
+	{
+		echo '<script>alert(" Phone Number Not Numeric !")</script>';
+	}
+	//email checking
+       else if( mysqli_fetch_assoc($resultemail) > 0 )
+       {	
+   		  die( "There is already a user with that email!" ) ;
+   		  die(mysql_error());
+       }
+
+	
+	
+	
+	
+		if(mysqli_query($conn,$insert)){
+			
+			echo '<script>window.location="Home.php"</script>';
+		}
+		else{
+			echo '<script>Failed To SignUp</script>';
+		echo '<script>window.location="signup.php"</script>';
+		}
+	
+   
+		
+	
+	}
+
+
+?>
