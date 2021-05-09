@@ -1,8 +1,6 @@
 <?php
 session_start();
-if(isset($_POST['signin'])){
-header("location:Home.php");
-}
+
 
 ?>
 <html>
@@ -454,57 +452,42 @@ body {
     <div class="v74_2"><div class="v74_3"></div>
     <div class="v74_17"></div>
     <div class="v74_4"></div><span class="v74_5">Beauty Dent </span><div class="v74_6"></div>
-    <form action=login.php method=post>
+    <form action="login.php" method="POST">
           
-    <input type=text name=email placeholder="Email" class="v74_9"required>   
-    <input type=text name=password placeholder="Password"  class="v74_11"required>
-    <input type=submit name= signin value= login class="v74_7">
-</form>
-<div class="v74_12"></div><span class="v74_13">No account?</span><a href="../signup.php" class="v74_16">Register now</a><a href="../forgetPassword.php" class="v74_19">Forgot your   
-</a><span class="v74_20">Password?</span>
-              <a href="../se/Home.php" class="v74_22">Home</a>
-              <a href="../services.php" class="v74_23">Services</a>
-              <a href="../Gallery.php" class="v74_24">Gallery</a>
-              <a href="../About.php" class="v74_25">About </a>
-              <a href="../Appointment.php"class="v74_26">Appointments</a>
-              <a href="../se/contact-us.php"class="v74_27">Contact us</a> 
-              <div class="v74_32"></div><span class="v74_33">Your smile 
-               is our priority</span><div class="v74_39"></div><div class="v74_38"></div><div class="v74_35"></div><span class="v74_40">Al Manteqah Al Oula, 
-Nasr City, Cairo Governorate
-</span><span class="v74_41">Saturday-Thursuday
-     10AM-110PM</span><span class="v74_42">0101 818 1156</span></div>
-     <?php
+        <input type="text" name="email" placeholder="Email" class="v74_9"required>   
+        <input type="text" name="pass" placeholder="Password"  class="v74_11"required>
+        <button name= "signin" class="v74_7">Login</button>
+    </form>
+    <?php
        
     $dbServername="localhost";
 	$dbUsername="root";
 	$dbpassword="";
 	$db = "beautyclinic";
-
+  $conn = mysqli_connect($dbServername,$dbUsername,$dbpassword,$db);
 	
    		if(isset($_POST['signin']) && !empty($_POST['email']) && !empty($_POST['pass']) )
    		{
-			$conn = mysqli_connect($dbServername,$dbUsername,$dbpassword,$db);
+			
 			$_SESSION['e']=$_POST['email'];
 			$_SESSION['p']=$_POST['pass'];
 			$e=$_SESSION['e'];
 			$p=$_SESSION['p'];
-   			
+      
 			$result=mysqli_query($conn,"SELECT * FROM persons WHERE Email= '$e' AND Password= '$p'" );
 			if(mysqli_num_rows($result)>0){
 					while($row = mysqli_fetch_array($result)) {  
 						
-          
+           
 						$_SESSION['id'] = $row['id'];
-						$_SESSION['f'] = $row['First_Name'];
-                        $_SESSION['l']=$row['Last_Name'];
-						$_SESSION['e']= $row['Email'];
+            $id=$_SESSION['id'];
 						$_SESSION['t'] = $row['Type'];
             echo'<script>alert(" LoggedIn Successfully !")</script>';
                $t=$_SESSION['t'];
 							if($t=="patient")
 							{
 
-								header('Location: Home.php?id='.$id);
+                echo '<script>window.location="Home.php"</script>';
 							}
 
 						}
@@ -520,5 +503,19 @@ Nasr City, Cairo Governorate
 
 
          ?>
+<div class="v74_12"></div><span class="v74_13">No account?</span><a href="../signup.php" class="v74_16">Register now</a><a href="../forgetPassword.php" class="v74_19">Forgot your   
+</a><span class="v74_20">Password?</span>
+              <a href="../se/Home.php" class="v74_22">Home</a>
+              <a href="../services.php" class="v74_23">Services</a>
+              <a href="../Gallery.php" class="v74_24">Gallery</a>
+              <a href="../About.php" class="v74_25">About </a>
+              <a href="../Appointment.php"class="v74_26">Appointments</a>
+              <a href="../se/contact-us.php"class="v74_27">Contact us</a> 
+              <div class="v74_32"></div><span class="v74_33">Your smile 
+               is our priority</span><div class="v74_39"></div><div class="v74_38"></div><div class="v74_35"></div><span class="v74_40">Al Manteqah Al Oula, 
+Nasr City, Cairo Governorate
+</span><span class="v74_41">Saturday-Thursuday
+     10AM-110PM</span><span class="v74_42">0101 818 1156</span></div>
+     
     </body>
 </html>
