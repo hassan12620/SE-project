@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(isset($_POST['signin'])){
 header("location:Home.php");
 }
@@ -472,5 +473,46 @@ body {
 Nasr City, Cairo Governorate
 </span><span class="v74_41">Saturday-Thursuday
      10AM-110PM</span><span class="v74_42">0101 818 1156</span></div>
+     <?php
+       
+    $dbServername="localhost";
+	$dbUsername="root";
+	$dbpassword="";
+	$db = "beautyclinic";
+
+	
+   		if(isset($_POST['signin']) && !empty($_POST['email']) && !empty($_POST['pass']) )
+   		{
+			$conn = mysqli_connect($dbServername,$dbUsername,$dbpassword,$db);
+			$_SESSION['e']=$_POST['email'];
+			$_SESSION['p']=$_POST['pass'];
+			$e=$_SESSION['e'];
+			$p=$_SESSION['p'];
+   			
+			$result=mysqli_query($conn,"SELECT * FROM persons WHERE Email= '$e' AND Password= '$p'" );
+			if(mysqli_num_rows($result)>0){
+					while($row = mysqli_fetch_array($result)) {  
+						
+          
+						$_SESSION['id'] = $row['id'];
+						$_SESSION['f'] = $row['First_Name'];
+                        $_SESSION['l']=$row['Last_Name'];
+						$_SESSION['e']= $row['Email'];
+						$_SESSION['t'] = $row['Type'];
+            echo'<script>alert(" LoggedIn Successfully !")</script>';
+
+						}
+					}
+					else {
+						# code...
+						echo'<script>alert(" LogIn Failed !")</script>';
+						echo '<script>window.location="login.php"</script>';
+					}
+
+
+		}
+
+
+         ?>
     </body>
 </html>
